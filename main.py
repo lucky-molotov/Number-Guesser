@@ -19,7 +19,7 @@ def human_vs_pc():
             continue
 
         if guessed_number == random_number:
-            print(f"Congratulations! You guessed correctly with {3 - attempts} attempts used.")
+            print(f"Congratulations! You guessed correctly with {3 - attempts} attempts remaining.\n")
             human_wins += 1  # Increment human win
             break
         else:
@@ -46,15 +46,15 @@ def pc_vs_human():
         print(f"Computer guesses: {guessed_number}")
 
         if guessed_number == number_to_be_guessed:
-            print(f"The computer guessed correctly! It used {3 - attempts} attempts.")
+            print(f"The computer guessed correctly! It used {3 - attempts} attempts.\n")
             pc_wins += 1  # Increment PC win
             break
         else:
             attempts -= 1
-            print(f"Incorrect guess. Attempts remaining: {attempts}")
+            print(f"Incorrect guess. Attempts remaining: {attempts}\n")
     
     if attempts == 0:
-        print("Congratulations! The computer couldn't guess your number.")
+        print("Congratulations! The computer couldn't guess your number.\n")
         pc_losses += 1  # Increment PC loss
 
 def display_stats():
