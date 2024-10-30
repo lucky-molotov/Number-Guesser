@@ -61,13 +61,12 @@ def pc_vs_human():
         time.sleep(1)
 
 def display_stats():
-    
-    """Displays the win/loss record for both human and PC."""
-    print("\n--- Game Stats ---")
-    print(f"Human Wins: {human_wins}, Human Losses: {human_losses}")
-    print(f"PC Wins: {pc_wins}, PC Losses: {pc_losses}")
-    print("-------------------\n")
-    time.sleep(5)
+    """Display the win/loss record for both the human player and the computer."""
+    print("\n--- Game Statistics ---")
+    print(f"Human Wins: {human_wins}, Losses: {human_losses}")
+    print(f"Computer Wins: {pc_wins}, Losses: {pc_losses}")
+    print("-----------------------\n")
+    time.sleep(2)
 def menu():
     """Displays the main menu for the Number Guessing Game."""
     while True:
