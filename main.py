@@ -69,30 +69,33 @@ def display_stats():
     print("-------------------\n")
     time.sleep(5)
 def menu():
+    """Displays the main menu for the Number Guessing Game."""
     while True:
-        print("""
-        Number Guessing Game
-        Select an Option:
-        1: Human vs PC
-        2: PC vs Human
-        3: Display Win/Loss Record
-        4: Exit
-        """)
+        print("\n")
+        print("Number Guessing Game")
+        print("--------------------")
+        print("Select an Option:")
+        print("1: Human vs PC")
+        print("2: PC vs Human")
+        print("3: Display Win/Loss Record")
+        print("4: Exit")
+        print("--------------------")
+        
         try:
-            choice = int(input("Choose an option (1-4): "))
-            if choice == 1:
+            option = int(input("Choose an option (1-4): "))
+            if option == 1:
                 human_vs_pc()
-            elif choice == 2:
+            elif option == 2:
                 pc_vs_human()
-            elif choice == 3:
+            elif option == 3:
                 display_stats()
-            elif choice == 4:
+            elif option == 4:
                 print("Exiting the game. Goodbye!")
                 break
             else:
                 print("Invalid choice, please choose 1, 2, 3, or 4.")
         except ValueError:
             print("Invalid input, please enter a number (1-4).")
-
+         
 menu()
 
