@@ -1,5 +1,4 @@
 import random,time
-
 # Global variables to track wins and losses
 human_wins = 0
 human_losses = 0
@@ -32,35 +31,35 @@ def human_vs_computer():
         print(f"Sorry, you've used all attempts. The correct number was {target_number}.\n")
         human_losses += 1
 
-def pc_vs_human():
+def computer_vs_human():
     """The computer tries to guess a number chosen by the human player."""
     global pc_wins, pc_losses
 
     # Prompt the user for a number
     while True:
         try:
-            number_to_guess = int(input("Input a number for the computer to guess (0 to 10): "))
-            if 0 <= number_to_guess <= 10:
+            target_number = int(input("Input a number for the computer to guess (0 to 10): "))
+            if 0 <= target_number <= 10:
                 break
-            print("Invalid input. Please enter a number between 0 and 10.\n")
+            print("Invalid input. Please enter a valid number between 0 and 10.\n")
         except ValueError:
-            print("Invalid input. Please enter a number between 0 and 10.\n")
+            print("Invalid input. Please enter a valid number between 0 and 10.\n")
 
     # Set up the game loop
-    attempts = 3
-    while attempts > 0:
+    attempts_remaining = 3
+    while attempts_remaining > 0:
         computer_guess = random.randint(0, 10)
-        print(f"Computer guesses: {computer_guess}\n")
+        print(f"Computer guesses: {computer_guess}")
         time.sleep(1)
 
         # Check if the computer guessed correctly
-        if computer_guess == number_to_guess:
-            print(f"The computer guessed correctly! It used {3 - attempts} attempts.\n")
+        if computer_guess == target_number:
+            print(f"The computer guessed correctly! It used {3 - attempts_remaining} attempts.\n")
             pc_wins += 1  # Increment PC win
             break
         else:
-            attempts -= 1
-            print(f"Incorrect guess. Attempts remaining: {attempts}\n")
+            attempts_remaining -= 1
+            print(f"Incorrect guess. Attempts remaining: {attempts_remaining}\n")
     else:
         print("Congratulations! The computer couldn't guess your number.\n")
         pc_losses += 1  # Increment PC loss
@@ -88,9 +87,9 @@ def menu():
         try:
             option = int(input("Choose an option (1-4): "))
             if option == 1:
-                human_vs_pc()
+                human_vs_computer()
             elif option == 2:
-                pc_vs_human()
+                computer_vs_human()
             elif option == 3:
                 display_stats()
             elif option == 4:
