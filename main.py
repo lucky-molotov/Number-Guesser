@@ -31,34 +31,37 @@ def human_vs_pc():
         human_losses += 1  # Increment human loss
 
 def pc_vs_human():
+    """The computer tries to guess a number chosen by the human player."""
     global pc_wins, pc_losses
-    try:
-        number_to_be_guessed = int(input("Input a number for the computer to guess (0 to 10): "))
-        if not 0 <= number_to_be_guessed <= 10:
-            raise ValueError
-    except ValueError:
-        print("Invalid input. Please enter a number between 0 and 10.\n")
-        return
-    
+
+    # Prompt the user for a number
+    while True:
+        try:
+            number_to_guess = int(input("Input a number for the computer to guess (0 to 10): "))
+            if 0 <= number_to_guess <= 10:
+                break
+            print("Invalid input. Please enter a number between 0 and 10.\n")
+        except ValueError:
+            print("Invalid input. Please enter a number between 0 and 10.\n")
+
+    # Set up the game loop
     attempts = 3
     while attempts > 0:
-        guessed_number = random.randint(0, 10)
-        print(f"Computer guesses: {guessed_number}\n")
+        computer_guess = random.randint(0, 10)
+        print(f"Computer guesses: {computer_guess}\n")
         time.sleep(1)
 
-        if guessed_number == number_to_be_guessed:
+        # Check if the computer guessed correctly
+        if computer_guess == number_to_guess:
             print(f"The computer guessed correctly! It used {3 - attempts} attempts.\n")
             pc_wins += 1  # Increment PC win
-            time.sleep(1)
             break
         else:
             attempts -= 1
             print(f"Incorrect guess. Attempts remaining: {attempts}\n")
-            time.sleep(1)
-    if attempts == 0:
+    else:
         print("Congratulations! The computer couldn't guess your number.\n")
         pc_losses += 1  # Increment PC loss
-        time.sleep(1)
 
 def display_stats():
     """Display the win/loss record for both the human player and the computer."""
