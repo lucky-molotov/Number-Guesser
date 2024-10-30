@@ -1,4 +1,4 @@
-import random
+import random,time
 
 # Global variables to track wins and losses
 human_wins = 0
@@ -11,11 +11,11 @@ def human_vs_pc():
     random_number = random.randint(0, 10)
     attempts = 3
     while attempts > 0:
-        print(f"Number of attempts remaining: {attempts}")
+        print(f"Number of attempts remaining: {attempts}\n")
         try:
             guessed_number = int(input("Guess the Number (0 to 10): "))
         except ValueError:
-            print("Invalid input. Please enter a number between 0 and 10.")
+            print("Invalid input. Please enter a number between 0 and 10.\n")
             continue
 
         if guessed_number == random_number:
@@ -24,10 +24,10 @@ def human_vs_pc():
             break
         else:
             attempts -= 1
-            print("Incorrect, try again.")
+            print("Incorrect, try again.\n")
     
     if attempts == 0:
-        print(f"Sorry, you've run out of attempts. The correct number was {random_number}.")
+        print(f"Sorry, you've run out of attempts. The correct number was {random_number}.\n")
         human_losses += 1  # Increment human loss
 
 def pc_vs_human():
@@ -37,33 +37,37 @@ def pc_vs_human():
         if not 0 <= number_to_be_guessed <= 10:
             raise ValueError
     except ValueError:
-        print("Invalid input. Please enter a number between 0 and 10.")
+        print("Invalid input. Please enter a number between 0 and 10.\n")
         return
     
     attempts = 3
     while attempts > 0:
         guessed_number = random.randint(0, 10)
-        print(f"Computer guesses: {guessed_number}")
+        print(f"Computer guesses: {guessed_number}\n")
+        time.sleep(1)
 
         if guessed_number == number_to_be_guessed:
             print(f"The computer guessed correctly! It used {3 - attempts} attempts.\n")
             pc_wins += 1  # Increment PC win
+            time.sleep(1)
             break
         else:
             attempts -= 1
             print(f"Incorrect guess. Attempts remaining: {attempts}\n")
-    
+            time.sleep(1)
     if attempts == 0:
         print("Congratulations! The computer couldn't guess your number.\n")
         pc_losses += 1  # Increment PC loss
+        time.sleep(1)
 
 def display_stats():
+    
     """Displays the win/loss record for both human and PC."""
     print("\n--- Game Stats ---")
     print(f"Human Wins: {human_wins}, Human Losses: {human_losses}")
     print(f"PC Wins: {pc_wins}, PC Losses: {pc_losses}")
     print("-------------------\n")
-
+    time.sleep(5)
 def menu():
     while True:
         print("""
@@ -91,3 +95,4 @@ def menu():
             print("Invalid input, please enter a number (1-4).")
 
 menu()
+
