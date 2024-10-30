@@ -66,24 +66,26 @@ def computer_vs_human():
 
 def display_stats():
     """Display the win/loss record for both the human player and the computer."""
-    print("\n--- Game Statistics ---")
-    print(f"Human Wins: {human_wins}, Losses: {human_losses}")
-    print(f"Computer Wins: {pc_wins}, Losses: {pc_losses}")
-    print("-----------------------\n")
+    print(f"""
+    --- Game Statistics ---
+--Human Wins: {human_wins}, Losses: {human_losses}--
+--Computer Wins: {pc_wins}, Losses: {pc_losses}--
+    -----------------------
+    """)
     time.sleep(2)
 def menu():
     """Displays the main menu for the Number Guessing Game."""
     while True:
-        print("\n")
-        print("Number Guessing Game")
-        print("--------------------")
-        print("Select an Option:")
-        print("1: Human vs PC")
-        print("2: PC vs Human")
-        print("3: Display Win/Loss Record")
-        print("4: Exit")
-        print("--------------------")
-        
+        print(f"""
+        Number Guessing Game
+        --------------------
+        Select an Option
+        1: Human vs PC
+        2: PC vs Human
+        3: Display Win/Loss Record
+        4: Exit
+        --------------------
+        """)
         try:
             option = int(input("Choose an option (1-4): "))
             if option == 1:
