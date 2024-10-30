@@ -6,29 +6,31 @@ human_losses = 0
 pc_wins = 0
 pc_losses = 0
 
-def human_vs_pc():
+def human_vs_computer():
+    """The human player attempts to guess a randomly chosen number."""
     global human_wins, human_losses
-    random_number = random.randint(0, 10)
-    attempts = 3
-    while attempts > 0:
-        print(f"Number of attempts remaining: {attempts}\n")
+    target_number = random.randint(0, 10)
+    remaining_attempts = 3
+
+    while remaining_attempts > 0:
+        print(f"Attempts left: {remaining_attempts}\n")
         try:
-            guessed_number = int(input("Guess the Number (0 to 10): "))
+            player_guess = int(input("Guess the number (0 to 10): "))
         except ValueError:
-            print("Invalid input. Please enter a number between 0 and 10.\n")
+            print("Invalid input. Please enter a valid number between 0 and 10.\n")
             continue
 
-        if guessed_number == random_number:
-            print(f"Congratulations! You guessed correctly with {3 - attempts} attempts remaining.\n")
-            human_wins += 1  # Increment human win
+        if player_guess == target_number:
+            print(f"Congratulations! You guessed correctly with {remaining_attempts} attempts remaining.\n")
+            human_wins += 1
             break
         else:
-            attempts -= 1
-            print("Incorrect, try again.\n")
+            remaining_attempts -= 1
+            print("Incorrect guess, please try again.\n")
     
-    if attempts == 0:
-        print(f"Sorry, you've run out of attempts. The correct number was {random_number}.\n")
-        human_losses += 1  # Increment human loss
+    if remaining_attempts == 0:
+        print(f"Sorry, you've used all attempts. The correct number was {target_number}.\n")
+        human_losses += 1
 
 def pc_vs_human():
     """The computer tries to guess a number chosen by the human player."""
